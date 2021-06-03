@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% extends 'foodapp/base.html' %}
+{% load static %}
+
+{% block body_block %}
+    <section class="banner-area banner-area2 menu-bg text-center">
+        <div class="container">
+            {% for c in customer %}
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{c.proficpic.url}}" height="200px" width="200px"><br><br>
+                    <h5><p class="text-white"><b>User_id : </b>{{c.user}}</p></h5>
+                </div>
+                <div class="col-4">
+                    <br><br>
+                    <h3><b>{{c.name}}</b></h3>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="card text-white bg-warning">
+                  <div class="card-body">
+                    <h5 class="card-title">Mobile Number</h5>
+                    <p class="card-text text-dark">IN.+91-{{c.mobile}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card text-white bg-warning">
+                  <div class="card-body">
+                    <h5 class="card-title">Address</h5>
+                    <p class="card-text text-dark">{{c.address}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br><br>
+            <div>
+                <a class="btn btn-warning" href="/updateprofile">Update Profile</a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}
+

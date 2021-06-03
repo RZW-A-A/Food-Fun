@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'foodapp/base.html' %}
+{% load static %}
+{% block body_block %}
+ <!-- Banner Area Starts -->
+    <section class="banner-area banner-area2 contact-bg text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1><i>Register Yourself</i></h1>
+                    <p class="pt-2"><i>Beast kind form divide night above let moveth bearing darkness.</i></p>
+                    <br>
+                    <br>
+                    <div class="container">
+                    <div align="center">
+                            <label style="color:white">User_id : </label>
+                            <b>{{user.username}}</b>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <br>
+                        <form align="center" method="POST" enctype="multipart/form-data">
+                            {{form.as_p}}
+                            {% csrf_token %}
+                            <br>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner Area End -->
+
+{% endblock %}

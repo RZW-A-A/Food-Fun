@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% extends 'foodapp/base.html' %}
+{% load static %}
+{% block body_block %}
+    <!-- Banner Area Starts -->
+    <section class="banner-area banner-area2 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1><i>Cart</i></h1>
+                    <p class="pt-2"><i>Beast kind form divide night above let moveth bearing darkness.</i></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner Area End -->
+<br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 table-responsive-sm">
+                <table class="col-12 table table-bordered table-hover">
+                    <tr>
+                        <td class="table-success"><h3><b>Item</b></h3></td>
+                        <td class="table-danger"><h3><b>Price</b></h3></td>
+                        <td class="table-warning"><h3><b>Quantity</b></h3></td>
+                        <td class="table-info"><h3><b>Total</b></h3></td>
+                    </tr>
+                    {% for item in items %}
+                    <tr>
+                        <td class="table-success"><img src="{{item.food.foodimage.url}}" height="150px" width="200px"><br><br><h5><b>{{item.food.foodname}}</b></h5></td>
+                        <td class="table-danger"><h5>Rs.<b>{{item.food.foodprice}}</b></h5></td>
+                        <td class="table-warning">
+                            <div style="flex:1">
+                                <h5><p class="quantity">{{item.quantity}}</p></h5>
+                                <div class="quantity">
+                                    <img data-action="add" class="chg-quantity update-cart" src="{% static  'images/arrow-up.png' %}">
+                                    <img data-action="remove" class="chg-quantity update-cart" src="{% static  'images/arrow-down.png' %}">
+                                </div>
+                            </div>
+                        </td>
+                        <td class="table-info"><h5><b>{{item.get_total}}</b></h5></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card border-warning">
+          <div class="card-header">
+              <h3><p align="center"><b>Billing</b></p></h3>
+          </div>
+          <div class="card-body">
+              {% for c in customer %}
+              <h5 class="card-title"><b>{{c.name}} check your total bill and items here...</b></h5>
+              {% endfor %}
+            <table class="table">
+                       <tr>
+                          <th><h5>Items: <strong>{{order.get_cart_items}}</strong></h5></th>
+                          <th><h5>Total:<strong> Rs. {{order.get_cart_total|floatformat:2}}</strong></h5></th>
+                          <th>
+                             <a  style="float:right; margin:5px;" class="btn btn-success" href="/checkout">Checkout</a>
+                          </th>
+                       </tr>
+                     </table>
+            <a href="/menu" class="btn btn-warning">Continue Shopping</a>
+          </div>
+          <div class="card-footer text-muted">
+
+          </div>
+        </div>
+    </div>
+<br>
+
+
+
+
+
+{% endblock %}

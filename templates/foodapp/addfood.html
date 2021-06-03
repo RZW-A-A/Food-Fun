@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'foodapp/base.html' %}
+{% load static %}
+{% block body_block %}
+ <!-- Banner Area Starts -->
+    <section class="banner-area banner-area2 contact-bg text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1><i>ADD FOOD</i></h1>
+                    <p class="pt-2"><i>Beast kind form divide night above let moveth bearing darkness.</i></p>
+                    <br><br>
+                    <div class="container">
+                        <form align="center" method="POST" enctype="multipart/form-data">
+                            {{food.as_p}}
+                            {% csrf_token %}
+                            <br>
+                            <button type="submit" class="btn btn-primary">Add Food</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner Area End -->
+
+{% endblock %}

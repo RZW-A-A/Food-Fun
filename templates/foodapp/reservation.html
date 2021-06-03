@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends 'foodapp/base.html' %}
+{% load static %}
+{% block body_block %}
+    <!-- Reservation Area Starts -->
+    <div class="reservation-area section-padding text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Natural ingredients and testy food</h2>
+                    <h4 class="mt-4">some trendy and popular courses offerd</h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+ <section class="food-area section-padding">
+<div class="container">
+    <div class="card text-center">
+      <div class="card-header">
+          <h3>BOOKING TABLE</h3>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">PLEASE FILL OUT ALL REQUIRED* FIELDS. THANKS!</h5><br>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="">
+                <b>{{form.as_p}}</b>
+                {% csrf_token %}
+                <button class="btn btn-outline-warning" type="submit">Reserve Table</button>
+            </div>
+        </form>
+      </div>
+      <div class="card-footer text-muted">
+
+      </div>
+    </div>
+</div>
+ </section>
+
+    <!-- Reservation Area End -->
+
+{% endblock %}
